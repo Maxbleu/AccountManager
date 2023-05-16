@@ -11,6 +11,8 @@ target/
 *.iws
 *.iml
 *.ipr
+src/main/resources/com/juanfran/accountsmanager/Images/
+src/main/resources/com/juanfran/accountsmanager/Properties/settingsApp.properties
 
 ### Eclipse ###
 .apt_generated
