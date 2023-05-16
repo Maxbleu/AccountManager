@@ -1,0 +1,140 @@
+/**             LOGIN           **/
+
+#labelForgotMyPassword:hover{
+    -fx-text-fill: #06AFB7;
+    -fx-cursor: Hand;
+}
+
+#labelTitleOfLoginView{
+    -fx-text-fill: #2E3347;
+}
+
+#labelForgotMyPassword{
+    -fx-text-fill: #2E3347;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+#iconSceneLoginView{
+    -fx-background-color: #232738;
+}
+
+#buttonSignInLoginView, #buttonNotHaveAccount, #buttonCancelForgotPasswordView, #buttonAceptForgotPasswordView, #buttonAceptRecoverPasswordView, #buttonAceptChangePasswordView, #buttonCancelRegisterUserView, #buttonAceptRegisterUserView {
+    -fx-background-color: #565e7f;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#buttonSignInLoginView:hover, #buttonNotHaveAccount:hover, #buttonCancelForgotPasswordView:hover, #buttonAceptForgotPasswordView:hover, #buttonAceptRecoverPasswordView:hover, #buttonAceptChangePasswordView:hover, #buttonCancelRegisterUserView:hover, #buttonAceptRegisterUserView:hover {
+    -fx-background-color: #06AFB7;
+    -fx-cursor: Hand;
+}
+
+.inputUserLoginView, .inputPasswordLoginView{
+    -fx-appearance: none;
+    -fx-width: 100%;
+    -fx-border-width: 0;
+    -fx-font-family: inherit;
+    -fx-height: 35px;
+    -fx-font-size: 12px;
+    -fx-font-weight: 400;
+    -fx-background-color: rgba(0, 0, 0, 0.02);
+    -fx-background-insets: 0, 0, 1;
+    -fx-background-radius: 3px;
+    -fx-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    -fx-text-fill: black;
+    -fx-transition: all .15s ease;
+}
+
+.inputUserLoginView:hover, .inputPasswordLoginView:hover{
+    -fx-background-color: #e5e7ea;
+}
+
+/**             OLVIDÉ MI CONTRASEÑA           **/
+
+#labelTitleOfForgotMyPassword{
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+    -fx-text-fill: white;
+}
+
+#sceneForgotMyPassword{
+    -fx-background-color: #313649;
+}
+
+#textoForgotMyPassword{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.inputGmailForgotPasswordView, .inputEmailRecoverPasswordView, .inputPasswordChangePasswordView, .inputUserNameRegisterUserView, .inputGmailRegisterUserView, .inputPasswordRegisterUserView{
+    -fx-appearance: none;
+    -fx-width: 100%;
+    -fx-border-width: 0;
+    -fx-font-family: inherit;
+    -fx-height: 35%;
+    -fx-font-size: 12px;
+    -fx-font-weight: 400;
+    -fx-background-color: #3a4056;
+    -fx-background-insets: 0, 0, 1;
+    -fx-background-radius: 3px;
+    -fx-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    -fx-text-fill: white;
+    -fx-transition: all .15s ease;
+}
+
+.inputGmailForgotPasswordView:hover, .inputEmailRecoverPasswordView:hover, .inputPasswordChangePasswordView:hover, .inputUserNameRegisterUserView:hover, .inputGmailRegisterUserView:hover, .inputPasswordRegisterUserView:hover{
+    -fx-background-color: #4c5370;
+}
+
+
+
+/**         RECUPERAR MI CONTRASEÑA         **/
+
+#labelTitleOfRecoverPasswordView, #textoRecoverPassword{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+
+/**         CAMBIAR MI CONTRASEÑA         **/
+
+#labelTitleChangePasswordView, #labelTitleOfRegisterUserView{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+}
+
+#sceneChangePasswordView{
+    -fx-background-color: #313649;
+}
+
+/**         REGISTRAR UN NUEVO USUARIO          **/
+
+#sceneRegisterUserView{
+    -fx-background-color: #313649;
+}
+
+/**         VISTA HOME          **/
+
+#vBoxMenuDashBoardMainView{
+    -fx-background-color: #565e7f;
+}
+
+#sceneMainView{
+    -fx-background-color: #232738;
+}
+
+.buttonAccounts{
+    -fx-background-color: #565e7f;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 0px;
+}
+
+.buttonAccounts:hover{
+    -fx-cursor: Hand;
+    -fx-background-color: #06AFB7;
+}
