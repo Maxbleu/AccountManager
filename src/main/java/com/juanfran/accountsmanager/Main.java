@@ -1,18 +1,14 @@
 package com.juanfran.accountsmanager;
 
-import com.juanfran.accountsmanager.di.OrchestratorProyectDependences;
+import  com.juanfran.accountsmanager.di.OrchestratorProyectDependences;
 import com.juanfran.accountsmanager.managers.PasswordManager;
 import com.juanfran.accountsmanager.managers.UserManager;
 import com.juanfran.accountsmanager.services.ViewServiceProvider;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-
-import java.io.IOException;
 
 public class Main extends Application {
     private static final Logger logger = Logger.getLogger("Inicio del programa");

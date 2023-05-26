@@ -12,6 +12,7 @@ import com.juanfran.accountsmanager.services.CipherServiceProvider;
 import com.juanfran.accountsmanager.services.ViewServiceProvider;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -89,6 +90,7 @@ public class RegisterUserController {
 
                         //  Colocamos el usuario registrado en AccountManager para tener acceso a la clave simétrica
                         AccountManager.userRegistered = newUser;
+                        AddAndModifyAccountController.userRegistered = newUser;
 
                         //  Almacenamos la contraseña en la base de datos
                         this.passwordDAOS.registerNewPassword(password);
@@ -97,7 +99,9 @@ public class RegisterUserController {
                         this.userDAOS.registerNewUser(newUser);
 
                         //  Navegar a la vista Main
-                        ((Stage) this.buttonAccept.getScene().getWindow()).setScene(ViewServiceProvider.getScene("MainView.fxml"));
+                        Scene mainScene = ViewServiceProvider.getScene("MainView.fxml");
+                        ((Stage)this.buttonAccept.getScene().getWindow()).setResizable(true);
+                        ((Stage)this.buttonAccept.getScene().getWindow()).setScene(mainScene);
 
                     }else{
 

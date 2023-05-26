@@ -7,9 +7,11 @@ module com.juanfran.accountsmanager.accounts_manager {
     requires java.sql;
 
     requires javax.mail.api;
+    requires de.jensd.fx.glyphs.commons;
+    requires de.jensd.fx.glyphs.iconsfivetwofive;
 
-    requires spring.beans;
     requires spring.core;
+    requires spring.beans;
     requires spring.context;
 
     requires CipherLibrary;

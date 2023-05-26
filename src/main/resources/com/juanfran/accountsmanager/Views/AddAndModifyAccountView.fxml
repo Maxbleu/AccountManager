@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1227.0" style="-fx-background-color: #313649;" stylesheets="@../StyleSheet/StyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanfran.accountsmanager.fxmlcontrollers.AddAndModifyAccountController">
+   <children>
+      <TextField fx:id="inputTestWebSiteTitle" layoutX="439.0" layoutY="265.0" prefHeight="45.0" prefWidth="369.0" promptText="Title" styleClass="inputTextAddAccountView" />
+      <TextField fx:id="inputTestUserName" layoutX="439.0" layoutY="489.0" prefHeight="45.0" prefWidth="369.0" promptText="UserName" styleClass="inputTextAddAccountView">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="inputTestPassword" layoutX="439.0" layoutY="563.0" prefHeight="45.0" prefWidth="369.0" promptText="Password" styleClass="inputTextAddAccountView">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="inputTestWebSiteURL" layoutX="439.0" layoutY="339.0" prefHeight="45.0" prefWidth="369.0" promptText="Website URL" styleClass="inputTextAddAccountView">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Button id="buttonAddAccountView" fx:id="buttonAcept" layoutX="439.0" layoutY="670.0" mnemonicParsing="false" onAction="#keepAccount" prefHeight="45.0" prefWidth="100.0" stylesheets="@../StyleSheet/StyleSheet.css" text="Acept">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button id="buttonAddAccountView" layoutX="558.0" layoutY="670.0" mnemonicParsing="false" onAction="#navigateToAccountsView" prefHeight="45.0" prefWidth="100.0" text="Cancel">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <ImageView fx:id="iconWebSite" fitHeight="122.0" fitWidth="148.0" layoutX="549.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="inputTestEmail" layoutX="439.0" layoutY="414.0" prefHeight="45.0" prefWidth="369.0" promptText="Email" styleClass="inputTextAddAccountView">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+   </children>
+</AnchorPane>

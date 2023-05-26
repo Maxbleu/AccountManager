@@ -19,13 +19,13 @@
     -fx-background-color: #232738;
 }
 
-#buttonSignInLoginView, #buttonNotHaveAccount, #buttonCancelForgotPasswordView, #buttonAceptForgotPasswordView, #buttonAceptRecoverPasswordView, #buttonAceptChangePasswordView, #buttonCancelRegisterUserView, #buttonAceptRegisterUserView {
+#buttonSignInLoginView, #buttonNotHaveAccount, #buttonCancelForgotPasswordView, #buttonAceptForgotPasswordView, #buttonAceptRecoverPasswordView, #buttonAceptChangePasswordView, #buttonCancelRegisterUserView, #buttonAceptRegisterUserView, #buttonAddAccountView {
     -fx-background-color: #565e7f;
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
-#buttonSignInLoginView:hover, #buttonNotHaveAccount:hover, #buttonCancelForgotPasswordView:hover, #buttonAceptForgotPasswordView:hover, #buttonAceptRecoverPasswordView:hover, #buttonAceptChangePasswordView:hover, #buttonCancelRegisterUserView:hover, #buttonAceptRegisterUserView:hover {
+#buttonSignInLoginView:hover, #buttonNotHaveAccount:hover, #buttonCancelForgotPasswordView:hover, #buttonAceptForgotPasswordView:hover, #buttonAceptRecoverPasswordView:hover, #buttonAceptChangePasswordView:hover, #buttonCancelRegisterUserView:hover, #buttonAceptRegisterUserView:hover, #buttonAddAccountView:hover {
     -fx-background-color: #06AFB7;
     -fx-cursor: Hand;
 }
@@ -67,7 +67,7 @@
     -fx-font-weight: bold;
 }
 
-.inputGmailForgotPasswordView, .inputEmailRecoverPasswordView, .inputPasswordChangePasswordView, .inputUserNameRegisterUserView, .inputGmailRegisterUserView, .inputPasswordRegisterUserView{
+.inputGmailForgotPasswordView, .inputEmailRecoverPasswordView, .inputPasswordChangePasswordView, .inputUserNameRegisterUserView, .inputGmailRegisterUserView, .inputPasswordRegisterUserView, .inputTextAddAccountView{
     -fx-appearance: none;
     -fx-width: 100%;
     -fx-border-width: 0;
@@ -83,7 +83,7 @@
     -fx-transition: all .15s ease;
 }
 
-.inputGmailForgotPasswordView:hover, .inputEmailRecoverPasswordView:hover, .inputPasswordChangePasswordView:hover, .inputUserNameRegisterUserView:hover, .inputGmailRegisterUserView:hover, .inputPasswordRegisterUserView:hover{
+.inputGmailForgotPasswordView:hover, .inputEmailRecoverPasswordView:hover, .inputPasswordChangePasswordView:hover, .inputUserNameRegisterUserView:hover, .inputGmailRegisterUserView:hover, .inputPasswordRegisterUserView:hover, .inputTextAddAccountView:hover{
     -fx-background-color: #4c5370;
 }
 
@@ -125,16 +125,92 @@
     -fx-background-color: #232738;
 }
 
-.buttonAccounts{
+.buttonAccounts, .buttonDashBoard{
     -fx-background-color: #565e7f;
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
     -fx-border-radius: 0px;
     -fx-background-radius: 0px;
 }
 
-.buttonAccounts:hover{
+.buttonAccounts:hover, .buttonDashBoard:hover{
     -fx-cursor: Hand;
     -fx-background-color: #06AFB7;
+}
+
+/**         VISTA ACCOUNTS          **/
+
+#sceneAccountsView{
+    -fx-background-color:  #313649;
+}
+
+#labelTitleAccountsView{
+    -fx-text-fill: white;
+}
+
+#listViewAccountsView{
+    -fx-background-color:  #313649;
+}
+
+#buttonDeleteAccountsView{
+    -fx-border-color: #E84545;
+    -fx-border-width: 0.5px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E84545;
+    -fx-font-weight: bold;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+#buttonAddItemAccountsView, #buttonCerrarPanelDetalleCuenta, #buttonEditAccount{
+    -fx-border-color: white;
+    -fx-border-width: 0.5px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+#buttonAddItemAccountsView:hover{
+    -fx-font-size: 14px;
+    -fx-background-color: #06AFB7;
+    -fx-cursor: Hand;
+}
+
+#buttonDeleteAccountsView:hover{
+    -fx-font-size: 14px;
+    -fx-background-color: #E84545;
+    -fx-text-fill: #565e7f;
+    -fx-cursor: Hand;
+}
+
+/**         VISTA AÑADIR UNA CUENTA EN EL USUARIO       **/
+
+.inputTextAddAccountView{
+    -fx-appearance: none;
+    -fx-width: 100%;
+    -fx-border-width: 0;
+    -fx-font-family: inherit;
+    -fx-height: 35%;
+    -fx-font-size: 15px;
+    -fx-font-weight: 400;
+    -fx-background-color: #3a4056;
+    -fx-background-insets: 0, 0, 1;
+    -fx-background-radius: 3px;
+    -fx-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    -fx-text-fill: white;
+    -fx-transition: all .15s ease;
+}
+
+.inputTextAddAccountView:hover{
+    -fx-background-color: #4c5370;
+}
+
+/**         PANEL VISTA DETALLE CUENTA PERSONAL         **/
+
+#buttonCerrarPanelDetalleCuenta{
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
 }

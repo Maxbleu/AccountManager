@@ -6,9 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Optional;
 
 public final class ViewServiceProvider {
 
@@ -111,7 +114,7 @@ public final class ViewServiceProvider {
      * @param content
      * @param alertType
      */
-    public static void launchAlert(String title, String content, Alert.AlertType alertType){
+    public static Optional<ButtonType> launchAlert(String title, String content, Alert.AlertType alertType){
         OrchestratorProyectDependences.getLogger().info("Lanzamos una alerta");
 
         //  Creamos una alerta indicando en su constructor el tipo de esta
@@ -124,6 +127,8 @@ public final class ViewServiceProvider {
         alertaFormulario.setContentText(content);
 
         //  Mostramos la alerta
-        alertaFormulario.showAndWait();
+        Optional<ButtonType> action = alertaFormulario.showAndWait();
+
+        return alertType.equals(Alert.AlertType.CONFIRMATION) ? action : null;
     }
 }

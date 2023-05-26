@@ -38,7 +38,12 @@ public class UserModel {
 
     public Integer getIdUser() {
         if(this.idUser==null){
-            this.idUser = UserManager.Users.isEmpty() ? UserManager.Users.get(UserManager.Users.size()-1).getIdUser()+1 : 1;
+            if(UserManager.Users.size() > 0){
+                Integer lastPosition = UserManager.Users.size()-1;
+                this.idUser = UserManager.Users.get(lastPosition).idUser+1;
+            }else{
+                this.idUser = 1;
+            }
         }
         return idUser;
     }

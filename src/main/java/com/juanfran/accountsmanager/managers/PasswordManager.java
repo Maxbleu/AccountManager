@@ -90,7 +90,7 @@ public class PasswordManager {
      * @param newPassword
      */
     public void insertNewPassword(String query, PasswordModel newPassword) {
-        this.sqlServerLibrary.executeUpdateStoreProcedure(query,true, newPassword.getPassword());
+        this.sqlServerLibrary.executeUpdateStoreProcedure(query,true, newPassword.getIdPassword(),newPassword.getPassword());
     }
 
     /**

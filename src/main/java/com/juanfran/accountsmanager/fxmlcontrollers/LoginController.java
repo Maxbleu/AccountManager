@@ -11,6 +11,7 @@ import com.juanfran.accountsmanager.services.CipherServiceProvider;
 import com.juanfran.accountsmanager.services.ViewServiceProvider;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -82,7 +83,7 @@ public class LoginController {
                     //  Creamos la clave simétrica y la insertamos en el usuario
                     user.setSecretKey(CipherServiceProvider.generateAsemetricKey(user.getIdUser().toString()));
 
-                    //  Pasaremos el usuario registrado a el campo estático de la clase AccountManager
+                    //  Pasaremos el usuario registrado a el campo estático de la clase AccountManager y al controlador AddAndModifyAccountCont
                     //  EXP:
                     //  Realizo esta acción ya que hacer login en la aplicación va de la mano con
                     //  que el usuario tenga acceso a la información por lo cual debemos pasarle
@@ -90,11 +91,18 @@ public class LoginController {
                     //  base de datos para que el usuario pueda verlos.
                     AccountManager.userRegistered = user;
 
+                    //  Además, requerimos también el usuario registrado cuando añadimos o
+                    //  modificamos una cuenta personal para cifrar su información
+                    //  antes de ser enviada a la base de datos.
+                    AddAndModifyAccountController.userRegistered = user;
+
                     //  Cargamos las cuentas del usuario en la aplicación
                     ((AccountManager) OrchestratorProyectDependences.getService(AccountManager.class)).selectAccountsByUserId(" { Call SelectAccountsByUserId (?) } ", user.getIdUser());
 
                     //  Navegamos a la página principal de la aplicación
-                    ((Stage)this.textFieldError.getScene().getWindow()).setScene(ViewServiceProvider.getScene("MainView.fxml"));
+                    Scene mainScene = ViewServiceProvider.getScene("MainView.fxml");
+                    ((Stage)this.textFieldError.getScene().getWindow()).setResizable(true);
+                    ((Stage)this.textFieldError.getScene().getWindow()).setScene(mainScene);
                 }else{
 
                     //  La contraseña introducida es incorrecta

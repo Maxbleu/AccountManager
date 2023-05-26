@@ -92,6 +92,6 @@ public class UserManager {
     public void insertUser(String query, UserModel user) {
         byte[] cipheredEmailUser = AESCipherLibrary.cifrarAES(user.getEmail(),user.getSecretKey());
         byte[] cipheredIdPasswordUser = AESCipherLibrary.cifrarAES(user.getIdPassword().toString(),user.getSecretKey());
-        this.sqlServerLibrary.executeUpdateStoreProcedure(query, true, cipheredEmailUser,user.getName(),cipheredIdPasswordUser);
+        this.sqlServerLibrary.executeUpdateStoreProcedure(query, true, user.getIdUser(),cipheredEmailUser,user.getName(),cipheredIdPasswordUser);
     }
 }

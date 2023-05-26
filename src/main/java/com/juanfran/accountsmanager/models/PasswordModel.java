@@ -22,8 +22,9 @@ public class PasswordModel {
 
     public Integer getIdPassword() {
         if(this.idPassword==null){
-            if(PasswordManager.Passwords.isEmpty()){
-                this.idPassword = PasswordManager.Passwords.get(PasswordManager.Passwords.size()-1).getIdPassword()+1;
+            if(PasswordManager.Passwords.size() > 0){
+                Integer lastPosition = PasswordManager.Passwords.size()-1;
+                this.idPassword = PasswordManager.Passwords.get(lastPosition).idPassword+1;
             }else{
                 this.idPassword = 1;
             }

@@ -59,7 +59,7 @@ public class UserDAOS implements IUserDAOS {
     @Override
     public void registerNewUser(UserModel newUser) {
         this.logger.info("Registramos un nuevo usuario");
-        this.usersManager.insertUser(" { Call insertUser (?,?,?) } ",newUser);
+        this.usersManager.insertUser(" { Call InsertUser (?,?,?,?) } ",newUser);
         UserManager.Users.add(newUser);
     }
 

@@ -65,10 +65,11 @@ public class AccountManager {
      * @param account
      */
     public void insertAccount(String query, AccountModel account) {
+        account.setIdUser(userRegistered.getIdUser());
         byte[] cipheredEmailAccount = AESCipherLibrary.cifrarAES(account.getEmail(), userRegistered.getSecretKey());
         byte[] cipheredPasswordIdAccount = AESCipherLibrary.cifrarAES(account.getPasswordModel().getIdPassword().toString(), userRegistered.getSecretKey());
         byte[] cipheredUserIdAccount = AESCipherLibrary.cifrarAES(account.getIdUser().toString(), userRegistered.getSecretKey());
-        this.sqlServerLibrary.executeUpdateStoreProcedure(query, true, account.getWebSiteAddress(), account.getUserName(), cipheredEmailAccount, cipheredPasswordIdAccount, cipheredUserIdAccount);
+        this.sqlServerLibrary.executeUpdateStoreProcedure(query, true, account.getIdAccount(),account.getWebSiteAddress(), account.getWebSiteTitle(), account.getUserName(), cipheredEmailAccount, cipheredPasswordIdAccount, cipheredUserIdAccount);
     }
 
     /**
@@ -97,6 +98,7 @@ public class AccountManager {
                     account.setEmail(AESCipherLibrary.decifrarAES(resultSet.getBytes(4), userRegistered.getSecretKey()));
                     account.setPasswordModel(this.passwordDAOS.getPasswordById(Integer.parseInt(AESCipherLibrary.decifrarAES(resultSet.getBytes(5), userRegistered.getSecretKey()))));
                     account.setIdUser(Integer.parseInt(AESCipherLibrary.decifrarAES(resultSet.getBytes(6), userRegistered.getSecretKey())));
+                    account.setWebSiteTitle(resultSet.getString(7));
 
                     //  La almacenamos en la lista
                     Accounts.add(account);
@@ -107,5 +109,19 @@ public class AccountManager {
             //  En caso de error se registrará
             this.logger.error(e.getMessage());
         }
+    }
+
+    /**
+     * Este método se encarga de
+     * eliminar una cuenta de la
+     * base de datos
+     * @param query
+     * @param account
+     */
+    public void deleteAccount(String query, AccountModel account){
+
+        this.logger.info("Borramos la cuenta " + account.getUserName() + " de la base de datos");
+
+        this.sqlServerLibrary.executeUpdateStoreProcedure(query,true, account.getIdAccount());
     }
 }

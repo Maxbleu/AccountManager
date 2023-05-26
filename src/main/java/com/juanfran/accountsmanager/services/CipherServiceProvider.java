@@ -39,4 +39,23 @@ public final class CipherServiceProvider {
         return AESCipherLibrary.generarClaveSecretaAES(hashSemillaHex);
     }
 
+    /**
+     * Este método permite obtener un array
+     * de bytes se encuentra dentro de la
+     * cadena de carácteres
+     * @param stringArrayBytes
+     * @return
+     */
+    public static byte[] stringOfArrayBytesToArrayBytes(String stringArrayBytes){
+        String[] elementos = stringArrayBytes.split(", ");
+
+        byte[] arregloBytes = new byte[elementos.length];
+
+        for (int i = 0; i < elementos.length; i++) {
+            arregloBytes[i] = Byte.parseByte(elementos[i].trim());
+        }
+
+        return arregloBytes;
+    }
+
 }

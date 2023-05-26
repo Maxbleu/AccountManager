@@ -68,7 +68,7 @@ public class PasswordDAOS implements IPasswordDAOS {
     @Override
     public void registerNewPassword(PasswordModel password) {
         this.logger.info("Registramos una nueva contraseña");
-        this.passwordsManager.insertNewPassword("{ Call insertPassword (?) }",password);
+        this.passwordsManager.insertNewPassword("{ Call InsertPassword (?,?) }",password);
         PasswordManager.Passwords.add(password);
     }
 

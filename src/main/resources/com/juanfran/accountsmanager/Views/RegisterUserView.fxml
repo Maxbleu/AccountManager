@@ -18,7 +18,7 @@
         <TextField fx:id="textFieldEmail" layoutX="256.0" layoutY="151.0" prefHeight="35.0" prefWidth="187.0" promptText="Email" styleClass="inputGmailRegisterUserView" />
         <Button id="buttonAceptRegisterUserView" fx:id="buttonAccept" layoutX="367.0" layoutY="316.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="35.0" prefWidth="76.0" text="Aceptar" />
         <PasswordField fx:id="passwordField" layoutX="256.0" layoutY="207.0" prefHeight="35.0" prefWidth="187.0" promptText="Password" styleClass="inputPasswordRegisterUserView" />
-        <PasswordField fx:id="PasswordFieldRepeatedPassword" layoutX="256.0" layoutY="258.0" prefHeight="35.0" prefWidth="187.0" promptText="Repeat Password" styleClass="inputPasswordRegisterUserView" />
+        <PasswordField fx:id="passwordFieldRepeatedPassword" layoutX="256.0" layoutY="258.0" prefHeight="35.0" prefWidth="187.0" promptText="Repeat Password" styleClass="inputPasswordRegisterUserView" />
         <Button id="buttonCancelRegisterUserView" layoutX="256.0" layoutY="316.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="76.0" text="Cancelar" />
     </children>
 </AnchorPane>

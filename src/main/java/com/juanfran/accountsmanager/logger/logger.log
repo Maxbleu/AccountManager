@@ -1,11 +1,8 @@
 INFO - Cargamos la escena LoginView.fxml
-INFO - Cargamos la escena ForgotMyPasswordView.fxml
-INFO - Cargamos la escena LoginView.fxml
-INFO - El usuario ha cancelado el proceso de recuperación de su contraseña
 INFO - Cargamos la escena RegisterUserView.fxml
-INFO - Cargamos la escena LoginView.fxml
-INFO - Cargamos la escena RegisterUserView.fxml
-INFO - Cargamos la escena LoginView.fxml
-INFO - Cargamos la escena ForgotMyPasswordView.fxml
-INFO - Actualizamos el código de recuperación de la contraseña
-INFO - Cargamos la escena RecoverPasswordView.fxml
+INFO - Registramos una nueva contraseña
+INFO - Registramos un nuevo usuario
+INFO - Cargamos la escena MainView.fxml
+INFO - Insertamos la cuenta de Twitch, Zaidanxp en la base de datos
+INFO - Registramos una nueva contraseña
+INFO - Insertamos la cuenta Zaidanxp en la base de datos
