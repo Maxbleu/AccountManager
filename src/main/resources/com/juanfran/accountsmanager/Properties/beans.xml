@@ -47,4 +47,6 @@
         <constructor-arg ref="UserManager" />
     </bean>
 
+    <bean id="Main" class="com.juanfran.accountsmanager.Main" />
+
 </beans>

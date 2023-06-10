@@ -8,4 +8,8 @@ public interface IAccountDAOS {
     void registerNewAccount(AccountModel account);
     List<AccountModel> getAccounts();
     void removeAccount(AccountModel accountModel);
+    AccountModel searchAccountById(Integer id);
+    void updateAccount(AccountModel account);
+    void updateIsRemoved(Integer idAccount ,boolean isRemoved);
+    List<AccountModel> getListAccountsRemoved();
 }

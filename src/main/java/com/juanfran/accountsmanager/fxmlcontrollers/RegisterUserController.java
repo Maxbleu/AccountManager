@@ -91,6 +91,9 @@ public class RegisterUserController {
                         //  Colocamos el usuario registrado en AccountManager para tener acceso a la clave simétrica
                         AccountManager.userRegistered = newUser;
                         AddAndModifyAccountController.userRegistered = newUser;
+                        AccountsController.userRegistered = newUser;
+                        MainController.userRegistered = newUser;
+                        SettingsController.userRegistered = newUser;
 
                         //  Almacenamos la contraseña en la base de datos
                         this.passwordDAOS.registerNewPassword(password);

@@ -20,7 +20,7 @@ import java.util.List;
 @Component
 public class AccountManager {
     private final ISqlServerLibrary sqlServerLibrary;
-    public static final List<AccountModel> Accounts = new ArrayList<>();
+    public final List<AccountModel> Accounts = new ArrayList<>();
     private final PasswordDAOS passwordDAOS;
     public static UserModel userRegistered;
     private final Logger logger;
@@ -67,7 +67,7 @@ public class AccountManager {
     public void insertAccount(String query, AccountModel account) {
         account.setIdUser(userRegistered.getIdUser());
         byte[] cipheredEmailAccount = AESCipherLibrary.cifrarAES(account.getEmail(), userRegistered.getSecretKey());
-        byte[] cipheredPasswordIdAccount = AESCipherLibrary.cifrarAES(account.getPasswordModel().getIdPassword().toString(), userRegistered.getSecretKey());
+        byte[] cipheredPasswordIdAccount = AESCipherLibrary.cifrarAES(account.getIdPassword().toString(), userRegistered.getSecretKey());
         byte[] cipheredUserIdAccount = AESCipherLibrary.cifrarAES(account.getIdUser().toString(), userRegistered.getSecretKey());
         this.sqlServerLibrary.executeUpdateStoreProcedure(query, true, account.getIdAccount(),account.getWebSiteAddress(), account.getWebSiteTitle(), account.getUserName(), cipheredEmailAccount, cipheredPasswordIdAccount, cipheredUserIdAccount);
     }
@@ -96,9 +96,10 @@ public class AccountManager {
                     account.setWebSiteAddress(resultSet.getString(2));
                     account.setUserName(resultSet.getString(3));
                     account.setEmail(AESCipherLibrary.decifrarAES(resultSet.getBytes(4), userRegistered.getSecretKey()));
-                    account.setPasswordModel(this.passwordDAOS.getPasswordById(Integer.parseInt(AESCipherLibrary.decifrarAES(resultSet.getBytes(5), userRegistered.getSecretKey()))));
+                    account.setIdPassword(Integer.parseInt(AESCipherLibrary.decifrarAES(resultSet.getBytes(5), userRegistered.getSecretKey())));
                     account.setIdUser(Integer.parseInt(AESCipherLibrary.decifrarAES(resultSet.getBytes(6), userRegistered.getSecretKey())));
                     account.setWebSiteTitle(resultSet.getString(7));
+                    account.setRemoved(resultSet.getInt(8)==1 ? true : false);
 
                     //  La almacenamos en la lista
                     Accounts.add(account);
@@ -116,12 +117,43 @@ public class AccountManager {
      * eliminar una cuenta de la
      * base de datos
      * @param query
-     * @param account
+     * @param idAccount
      */
-    public void deleteAccount(String query, AccountModel account){
+    public void deleteAccount(String query, Integer idAccount){
 
-        this.logger.info("Borramos la cuenta " + account.getUserName() + " de la base de datos");
+        this.logger.info("Borramos la cuenta " + idAccount + " de la base de datos");
 
-        this.sqlServerLibrary.executeUpdateStoreProcedure(query,true, account.getIdAccount());
+        this.sqlServerLibrary.executeUpdateStoreProcedure(query,true, idAccount);
+    }
+
+    /**
+     * Este método se encarga de actualizar
+     * los datos de la cuenta personal
+     * de un usuario en la base de datos
+     * @param idAccount
+     * @param webSiteAddress
+     * @param userName
+     * @param email
+     * @param webSiteTitle
+     */
+    public void updateAccount(String query, Integer idAccount, String webSiteAddress, String userName, String email, String webSiteTitle){
+        byte[] cipheredEmailAccount = AESCipherLibrary.cifrarAES(email,userRegistered.getSecretKey());
+        this.sqlServerLibrary.executeUpdateStoreProcedure(query,true,idAccount,webSiteAddress,userName,cipheredEmailAccount,webSiteTitle);
+    }
+
+    /**
+     * Este método se encarga de
+     * actualizar el campo isRemoved de la tabla
+     * Accounts cuando eliminamos
+     * una cuenta personal de la vista Accounts.
+     * Esto lo hacemos principalmente para indicar
+     * que cuenta personal ha sido eliminada
+     * de esa vista pero no de la aplicación
+     * @param query
+     * @param isRemoved
+     * @param idAccount
+     */
+    public void updateIsRemoved(String query, Integer idAccount, boolean isRemoved){
+        this.sqlServerLibrary.executeUpdateStoreProcedure(query,true, idAccount,isRemoved ? 1 : 0);
     }
 }

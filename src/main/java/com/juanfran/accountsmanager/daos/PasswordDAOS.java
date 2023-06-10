@@ -34,10 +34,10 @@ public class PasswordDAOS implements IPasswordDAOS {
     @Override
     public void updatePassword(Integer idPassword, String password) {
         this.logger.info("Actualizamos la contraseña");
-        for(int i = 0; i<PasswordManager.Passwords.size(); i++){
-            if(PasswordManager.Passwords.get(i).getIdPassword().equals(idPassword)){
+        for(int i = 0; i<this.passwordsManager.Passwords.size(); i++){
+            if(this.passwordsManager.Passwords.get(i).getIdPassword().equals(idPassword)){
                 this.passwordsManager.executeUpdatePassword("{ Call updatePassword (?,?) }",idPassword,password);
-                PasswordManager.Passwords.get(i).setPassword(password);
+                this.passwordsManager.Passwords.get(i).setPassword(password);
             }
         }
     }
@@ -52,8 +52,8 @@ public class PasswordDAOS implements IPasswordDAOS {
      */
     @Override
     public boolean isTheSamePassword(Integer idPassword, String password) {
-        for(int i = 0; i<PasswordManager.Passwords.size(); i++){
-            if(PasswordManager.Passwords.get(i).getIdPassword().equals(idPassword)){
+        for(int i = 0; i<this.passwordsManager.Passwords.size(); i++){
+            if(this.passwordsManager.Passwords.get(i).getIdPassword().equals(idPassword) && this.passwordsManager.Passwords.get(i).getPassword().equals(password)){
                 return true;
             }
         }
@@ -69,7 +69,7 @@ public class PasswordDAOS implements IPasswordDAOS {
     public void registerNewPassword(PasswordModel password) {
         this.logger.info("Registramos una nueva contraseña");
         this.passwordsManager.insertNewPassword("{ Call InsertPassword (?,?) }",password);
-        PasswordManager.Passwords.add(password);
+        this.passwordsManager.Passwords.add(password);
     }
 
     /**
@@ -80,9 +80,9 @@ public class PasswordDAOS implements IPasswordDAOS {
      */
     @Override
     public PasswordModel getPasswordById(Integer id) {
-        for(int i = 0; i< PasswordManager.Passwords.size(); i++){
-            if(PasswordManager.Passwords.get(i).getIdPassword().equals(id)){
-                return PasswordManager.Passwords.get(i);
+        for(int i = 0; i< this.passwordsManager.Passwords.size(); i++){
+            if(this.passwordsManager.Passwords.get(i).getIdPassword().equals(id)){
+                return this.passwordsManager.Passwords.get(i);
             }
         }
         return null;
@@ -97,10 +97,10 @@ public class PasswordDAOS implements IPasswordDAOS {
     @Override
     public void updateRecoverPasswordCode(Integer idPassword, Integer generatedCode){
         this.logger.info("Actualizamos el código de recuperación de la contraseña");
-        for(int i = 0; i<PasswordManager.Passwords.size(); i++){
-            if(PasswordManager.Passwords.get(i).getIdPassword().equals(idPassword)){
+        for(int i = 0; i<this.passwordsManager.Passwords.size(); i++){
+            if(this.passwordsManager.Passwords.get(i).getIdPassword().equals(idPassword)){
                 this.passwordsManager.executeUpdateRecoverPasswordCode("{ Call updateRecoverPasswordCode (?,?) }",idPassword, generatedCode);
-                PasswordManager.Passwords.get(i).setRecuperationCode(generatedCode);
+                this.passwordsManager.Passwords.get(i).setRecuperationCode(generatedCode);
             }
         }
     }
@@ -114,11 +114,26 @@ public class PasswordDAOS implements IPasswordDAOS {
      */
     @Override
     public Integer getRecoverPasswordCode(Integer idPassword) {
-        for(int i = 0; i<PasswordManager.Passwords.size(); i++){
-            if(PasswordManager.Passwords.get(i).getIdPassword().equals(idPassword)){
-                return PasswordManager.Passwords.get(i).getRecuperationCode();
+        for(int i = 0; i<this.passwordsManager.Passwords.size(); i++){
+            if(this.passwordsManager.Passwords.get(i).getIdPassword().equals(idPassword)){
+                return this.passwordsManager.Passwords.get(i).getRecuperationCode();
             }
         }
         return null;
+    }
+
+    /**
+     * Este método se encarga de eliminar
+     * la contraseña de la aplicación
+     * @param idPassword
+     */
+    @Override
+    public void removePassword(Integer idPassword) {
+        for(int i = 0; i<this.passwordsManager.Passwords.size(); i++){
+            if(this.passwordsManager.Passwords.get(i).getIdPassword()==idPassword){
+                this.passwordsManager.deletePassword("{ Call DeletePassword (?) }",idPassword);
+                this.passwordsManager.Passwords.remove(i);
+            }
+        }
     }
 }

@@ -1,8 +1,5 @@
 INFO - Cargamos la escena LoginView.fxml
-INFO - Cargamos la escena RegisterUserView.fxml
-INFO - Registramos una nueva contraseña
-INFO - Registramos un nuevo usuario
+INFO - La contraseña introducida es incorrecta
+INFO - Lanzamos una alerta
+INFO - Has iniciado sesión en la aplicación
 INFO - Cargamos la escena MainView.fxml
-INFO - Insertamos la cuenta de Twitch, Zaidanxp en la base de datos
-INFO - Registramos una nueva contraseña
-INFO - Insertamos la cuenta Zaidanxp en la base de datos

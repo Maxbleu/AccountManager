@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PasswordManager {
     private final ISqlServerLibrary sqlServerLibrary;
-    public static final List<PasswordModel> Passwords = new ArrayList<>();
+    public final List<PasswordModel> Passwords = new ArrayList<>();
     private final Logger logger;
     public PasswordManager(SqlServerLibrary sqlServerLibrary){
         this.sqlServerLibrary = sqlServerLibrary;
@@ -104,5 +104,16 @@ public class PasswordManager {
      */
     public void executeUpdatePassword(String query, Integer idPassword, String password) {
         this.sqlServerLibrary.executeUpdateStoreProcedure(query, true, idPassword, password);
+    }
+
+    /**
+     * Este método se encarga de eliminar
+     * una contraseña de la base de datos
+     * @param query
+     * @param idPassword
+     */
+    public void deletePassword(String query, Integer idPassword){
+        this.logger.info("Eliminamos la contraseña " + idPassword + " de la base de datos");
+        this.sqlServerLibrary.executeUpdateStoreProcedure(query, true, idPassword);
     }
 }

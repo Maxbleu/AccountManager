@@ -1,26 +1,37 @@
 package com.juanfran.accountsmanager.fxmlcontrollers;
 
+import com.google.api.services.customsearch.v1.model.Result;
 import com.juanfran.accountsmanager.di.OrchestratorProyectDependences;
 import com.juanfran.accountsmanager.interfaces.IAccountDAOS;
 import com.juanfran.accountsmanager.interfaces.IPasswordDAOS;
 import com.juanfran.accountsmanager.models.AccountModel;
 import com.juanfran.accountsmanager.models.PasswordModel;
 import com.juanfran.accountsmanager.models.UserModel;
+import com.juanfran.accountsmanager.services.CipherServiceProvider;
+import com.juanfran.accountsmanager.services.GETCustomSearchsServiceProvider;
+import com.juanfran.accountsmanager.services.GETIconWebSiteServiceProvider;
 import com.juanfran.accountsmanager.services.ViewServiceProvider;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.text.Font;
 import org.apache.log4j.Logger;
 import org.cipherLibrary.Ciphers.AESCipherLibrary;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddAndModifyAccountController implements Initializable {
@@ -31,7 +42,7 @@ public class AddAndModifyAccountController implements Initializable {
     @FXML
     public TextField inputTestUserName;
     @FXML
-    public TextField inputTestPassword;
+    public PasswordField inputTestPassword;
     @FXML
     public TextField inputTestWebSiteURL;
     @FXML
@@ -40,6 +51,8 @@ public class AddAndModifyAccountController implements Initializable {
     public Button buttonAcept;
     @FXML
     public ImageView iconWebSite;
+    @FXML
+    public ListView listViewSearchsFound;
 
     //  DEPENDENCES
     private final Logger logger;
@@ -48,6 +61,8 @@ public class AddAndModifyAccountController implements Initializable {
 
     //  CAMPOS
     public static UserModel userRegistered;
+    private AccountModel accountSelected;
+    public final ObservableList<HBox> datosSearchsFound = FXCollections.observableArrayList();
 
     //  CONSTRUCTOR PRINCIPAL DE LA CLASE
 
@@ -71,19 +86,39 @@ public class AddAndModifyAccountController implements Initializable {
         //  Comprobamos que todos los inputText no están vacios
         if(!this.inputTestWebSiteURL.getText().equals("") && !this.inputTestEmail.getText().equals("") && !this.inputTestUserName.getText().equals("") && !this.inputTestPassword.getText().equals("") && !this.inputTestWebSiteTitle.getText().equals("")){
 
-            this.logger.info("Insertamos la cuenta de " + this.inputTestWebSiteTitle.getText() + ", " + this.inputTestUserName.getText() + " en la base de datos");
+            if(this.accountSelected == null){
 
-            //  Insertamos la contraseña de la cuenta personal en la aplicación
+                this.logger.info("Insertamos la cuenta de " + this.inputTestWebSiteTitle.getText() + ", " + this.inputTestUserName.getText() + " en la base de datos");
 
-            byte[] cipheredPassword = AESCipherLibrary.cifrarAES(this.inputTestPassword.getText(), userRegistered.getSecretKey());
-            String cipheredPasswordString = Arrays.toString(cipheredPassword);
+                //  Insertamos la contraseña de la cuenta personal en la aplicación
 
-            PasswordModel accountPassword = new PasswordModel(cipheredPasswordString);
-            this.passwordDAOS.registerNewPassword(accountPassword);
+                byte[] cipheredPassword = AESCipherLibrary.cifrarAES(this.inputTestPassword.getText(), userRegistered.getSecretKey());
+                String cipheredPasswordString = Arrays.toString(cipheredPassword);
 
-            //  Insertarmos la cuenta personal en la base de datos
-            AccountModel newPersonalAccount = new AccountModel(this.inputTestWebSiteURL.getText(),this.inputTestWebSiteTitle.getText(),this.inputTestUserName.getText(),this.inputTestEmail.getText(),accountPassword);
-            this.accountDAOS.registerNewAccount(newPersonalAccount);
+                PasswordModel accountPassword = new PasswordModel(cipheredPasswordString);
+                this.passwordDAOS.registerNewPassword(accountPassword);
+
+                //  Insertarmos la cuenta personal en la base de datos
+                AccountModel newPersonalAccount = new AccountModel(this.inputTestWebSiteURL.getText(),this.inputTestWebSiteTitle.getText(),this.inputTestUserName.getText(),this.inputTestEmail.getText(),accountPassword.getIdPassword());
+                this.accountDAOS.registerNewAccount(newPersonalAccount);
+
+            }else{
+
+                this.logger.info("Modificamos la cuenta de " + this.inputTestWebSiteTitle.getText() + ", " + this.inputTestUserName.getText() + " en la base de datos");
+
+                //  Modificamos los datos de la cuenta personal en la aplicación
+
+                byte[] cipheredPassword = AESCipherLibrary.cifrarAES(this.inputTestPassword.getText(), userRegistered.getSecretKey());
+                String cipheredPasswordString = Arrays.toString(cipheredPassword);
+                this.passwordDAOS.updatePassword(this.accountSelected.getIdPassword(),cipheredPasswordString);
+
+                accountSelected.setWebSiteAddress(this.inputTestWebSiteURL.getText());
+                accountSelected.setUserName(this.inputTestUserName.getText());
+                accountSelected.setEmail(this.inputTestEmail.getText());
+                accountSelected.setWebSiteTitle(this.inputTestWebSiteTitle.getText());
+                this.accountDAOS.updateAccount(accountSelected);
+
+            }
 
             //  Navegamos a la página AccountView
             navigateToAccountsView(actionEvent);
@@ -108,14 +143,85 @@ public class AddAndModifyAccountController implements Initializable {
         }
     }
 
+    /**
+     * Este método se encarga de cargar los datos
+     * de una cuenta personal para modificar
+     * los datos de esta
+     * @param accountSelected
+     * @param image
+     */
+    public void navigateToAccountViewToModifyAccount(AccountModel accountSelected ,Image image){
+        this.accountSelected = accountSelected;
+        this.iconWebSite.setImage(image);
+        this.inputTestEmail.setText(accountSelected.getEmail());
+        this.inputTestUserName.setText(accountSelected.getUserName());
+        this.inputTestWebSiteTitle.setText(accountSelected.getWebSiteTitle());
+        this.inputTestWebSiteURL.setText(accountSelected.getWebSiteAddress());
+
+        String stringBytesCipheredPassword = this.passwordDAOS.getPasswordById(accountSelected.getIdPassword()).getPassword();
+        byte[] bytesCipheredPassword = CipherServiceProvider.stringOfArrayBytesToArrayBytes(stringBytesCipheredPassword);
+        String password = AESCipherLibrary.decifrarAES(bytesCipheredPassword, userRegistered.getSecretKey());
+
+        this.inputTestPassword.setText(password);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //  Hacer funcionalidad de que por cada letra que escribe en el inputText WebSiteTitle
-        //  hacemos una búsqueda custom, obtenemos los resultados y los mostramos en forma de lista
-        //  pop app
+        this.inputTestWebSiteTitle.setOnKeyReleased(keyEvent -> {
+            List<Result> listResults = GETCustomSearchsServiceProvider.getResults(this.inputTestWebSiteTitle.getText());
+            if(listResults != null){
+                for(int i = 0; i<listResults.size(); i++){
+                    HBox hBoxSearchFound = new HBox();
+                    hBoxSearchFound.setAlignment(Pos.CENTER_LEFT);
+                    hBoxSearchFound.setPrefWidth(306);
+                    hBoxSearchFound.setPrefHeight(73);
 
-        //  Además, cuando hagas click en una opción del pop app el icono la página
-        //  se pondrá en el imageView y también pondremos en el inputTextWebSiteURL
-        //  la url de la página seleccionada
+                    ImageView imageViewIconWebSite = new ImageView(GETIconWebSiteServiceProvider.getPNGIcon(listResults.get(i).getFormattedUrl(),50));
+                    HBox.setMargin(imageViewIconWebSite,new Insets(20));
+                    HBox.setHgrow(imageViewIconWebSite, Priority.ALWAYS);
+
+                    hBoxSearchFound.getChildren().add(imageViewIconWebSite);
+
+                    Label labelWebSiteName = new Label(listResults.get(i).getTitle());
+                    labelWebSiteName.setFont(Font.font(14));
+                    labelWebSiteName.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
+
+                    HBox.setMargin(labelWebSiteName,new Insets(20));
+                    HBox.setHgrow(labelWebSiteName,Priority.ALWAYS);
+
+                    hBoxSearchFound.getChildren().add(labelWebSiteName);
+
+                    hBoxSearchFound.setOnMouseEntered(event -> {
+                        hBoxSearchFound.setStyle("-fx-background-color: #525b7c;");
+                    });
+
+                    hBoxSearchFound.setOnMouseExited(dragEvent -> {
+                        hBoxSearchFound.setStyle("-fx-background-color: #313649;");
+                    });
+
+                    hBoxSearchFound.setStyle("-fx-background-color: #313649;");
+
+                    hBoxSearchFound.setOnMouseClicked(event -> {
+                        for(int j = 0; j<this.datosSearchsFound.size(); j++){
+                            if(datosSearchsFound.get(j).isHover()){
+                                ImageView imageIconWebSite = (ImageView) datosSearchsFound.get(j).getChildren().get(0);
+                                this.iconWebSite.setImage(imageIconWebSite.getImage());
+
+                                Label labelWebSiteTitle = (Label) datosSearchsFound.get(j).getChildren().get(1);
+                                inputTestWebSiteTitle.setText(labelWebSiteTitle.getText());
+
+                                this.inputTestWebSiteURL.setText(listResults.get(j).getFormattedUrl());
+                            }
+                        }
+                        this.listViewSearchsFound.setVisible(false);
+                    });
+
+                    this.datosSearchsFound.add(hBoxSearchFound);
+                }
+            }
+
+            this.listViewSearchsFound.setItems(this.datosSearchsFound);
+            this.listViewSearchsFound.setVisible(true);
+        });
     }
 }

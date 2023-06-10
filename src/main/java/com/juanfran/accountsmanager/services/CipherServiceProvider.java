@@ -52,7 +52,26 @@ public final class CipherServiceProvider {
         byte[] arregloBytes = new byte[elementos.length];
 
         for (int i = 0; i < elementos.length; i++) {
-            arregloBytes[i] = Byte.parseByte(elementos[i].trim());
+
+            String number = "";
+
+            if(i==0 || i==elementos.length-1){
+
+                char[] chars = elementos[i].toCharArray();
+
+                for(int j = 0; j<chars.length; j++){
+                    if(chars[j]!='[' && chars[j]!=']'){
+                        number = number + chars[j];
+                    }
+                }
+
+            }else{
+
+                number = elementos[i].trim();
+
+            }
+
+            arregloBytes[i] = Byte.parseByte(number);
         }
 
         return arregloBytes;

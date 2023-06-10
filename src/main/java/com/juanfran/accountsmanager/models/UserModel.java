@@ -1,11 +1,22 @@
 package com.juanfran.accountsmanager.models;
 
+import com.juanfran.accountsmanager.Main;
+import com.juanfran.accountsmanager.di.OrchestratorProyectDependences;
 import com.juanfran.accountsmanager.managers.UserManager;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+
 
 import javax.crypto.SecretKey;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class UserModel {
     private Integer idUser;
+    private byte[] photoUserProfile;
     private String email;
     private String name;
     private Integer idPassword;
@@ -38,9 +49,10 @@ public class UserModel {
 
     public Integer getIdUser() {
         if(this.idUser==null){
-            if(UserManager.Users.size() > 0){
-                Integer lastPosition = UserManager.Users.size()-1;
-                this.idUser = UserManager.Users.get(lastPosition).idUser+1;
+            UserManager userManager = (UserManager) OrchestratorProyectDependences.getService(UserManager.class);
+            if(userManager.Users.size() > 0){
+                Integer lastPosition = userManager.Users.size()-1;
+                this.idUser = userManager.Users.get(lastPosition).idUser+1;
             }else{
                 this.idUser = 1;
             }
@@ -82,5 +94,34 @@ public class UserModel {
 
     public SecretKey getSecretKey(){
         return this.secretKey;
+    }
+
+    public Image getPhotoUserProfile() {
+        if(this.photoUserProfile != null){
+            ByteArrayInputStream bais = null;
+            BufferedImage bufferedImage = null;
+            Image userProfile = null;
+            try {
+                bais = new ByteArrayInputStream(this.photoUserProfile);
+                bufferedImage = ImageIO.read(bais);
+                userProfile = SwingFXUtils.toFXImage(bufferedImage, null);
+            } catch (IOException e) {
+                OrchestratorProyectDependences.getLogger().error(e.getMessage());
+            }
+            return userProfile;
+        }
+        return new Image(Main.class.getResource("Images/defaultUserPhoto.png").toString());
+    }
+    public void setPhotoUserProfile(Image photoUserProfile) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(photoUserProfile, null), "png", baos);
+        } catch (IOException e) {
+            OrchestratorProyectDependences.getLogger().error(e.getMessage());
+        }
+        this.photoUserProfile = baos.toByteArray();
+    }
+    public void setPhotoUserProfile(byte[] bytesPhotoUserProfile){
+        this.photoUserProfile = bytesPhotoUserProfile;
     }
 }

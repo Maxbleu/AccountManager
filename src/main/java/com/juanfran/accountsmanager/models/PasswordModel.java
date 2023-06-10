@@ -1,5 +1,6 @@
 package com.juanfran.accountsmanager.models;
 
+import com.juanfran.accountsmanager.di.OrchestratorProyectDependences;
 import com.juanfran.accountsmanager.managers.PasswordManager;
 import com.juanfran.accountsmanager.models.enums.SecurityPassword;
 
@@ -22,9 +23,10 @@ public class PasswordModel {
 
     public Integer getIdPassword() {
         if(this.idPassword==null){
-            if(PasswordManager.Passwords.size() > 0){
-                Integer lastPosition = PasswordManager.Passwords.size()-1;
-                this.idPassword = PasswordManager.Passwords.get(lastPosition).idPassword+1;
+            PasswordManager passwordManager = (PasswordManager) OrchestratorProyectDependences.getService(PasswordManager.class);
+            if(passwordManager.Passwords.size() > 0){
+                Integer lastPosition = passwordManager.Passwords.size()-1;
+                this.idPassword = passwordManager.Passwords.get(lastPosition).idPassword+1;
             }else{
                 this.idPassword = 1;
             }

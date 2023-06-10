@@ -19,13 +19,13 @@
     -fx-background-color: #232738;
 }
 
-#buttonSignInLoginView, #buttonNotHaveAccount, #buttonCancelForgotPasswordView, #buttonAceptForgotPasswordView, #buttonAceptRecoverPasswordView, #buttonAceptChangePasswordView, #buttonCancelRegisterUserView, #buttonAceptRegisterUserView, #buttonAddAccountView {
+.buttonSignInLoginView, #buttonNotHaveAccount, #buttonCancelForgotPasswordView, #buttonAceptForgotPasswordView, #buttonAceptRecoverPasswordView, #buttonAceptChangePasswordView, #buttonCancelRegisterUserView, #buttonAceptRegisterUserView, #buttonAddAccountView {
     -fx-background-color: #565e7f;
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
-#buttonSignInLoginView:hover, #buttonNotHaveAccount:hover, #buttonCancelForgotPasswordView:hover, #buttonAceptForgotPasswordView:hover, #buttonAceptRecoverPasswordView:hover, #buttonAceptChangePasswordView:hover, #buttonCancelRegisterUserView:hover, #buttonAceptRegisterUserView:hover, #buttonAddAccountView:hover {
+.buttonSignInLoginView:hover, #buttonNotHaveAccount:hover, #buttonCancelForgotPasswordView:hover, #buttonAceptForgotPasswordView:hover, #buttonAceptRecoverPasswordView:hover, #buttonAceptChangePasswordView:hover, #buttonCancelRegisterUserView:hover, #buttonAceptRegisterUserView:hover, #buttonAddAccountView:hover {
     -fx-background-color: #06AFB7;
     -fx-cursor: Hand;
 }
@@ -117,7 +117,7 @@
 
 /**         VISTA HOME          **/
 
-#vBoxMenuDashBoardMainView{
+#gridPaneMenuDashBoardMainView{
     -fx-background-color: #565e7f;
 }
 
@@ -125,18 +125,24 @@
     -fx-background-color: #232738;
 }
 
-.buttonAccounts, .buttonDashBoard{
+.buttonAccounts, .buttonDashBoard, .buttonTrash, .buttonGPassword, .buttonSettingsMainVFiew{
     -fx-background-color: #565e7f;
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 18px;
+    -fx-font-size: 16px;
     -fx-border-radius: 0px;
     -fx-background-radius: 0px;
+    -fx-alignment: left;
 }
 
-.buttonAccounts:hover, .buttonDashBoard:hover{
+.buttonAccounts:hover, .buttonDashBoard:hover, .buttonTrash:hover, .buttonGPassword:hover, .buttonSettingsMainVFiew:hover{
     -fx-cursor: Hand;
     -fx-background-color: #06AFB7;
+}
+
+#userProfile{
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
 }
 
 /**         VISTA ACCOUNTS          **/
@@ -149,11 +155,11 @@
     -fx-text-fill: white;
 }
 
-#listViewAccountsView{
+#listViewAccountsView, .list-cell{
     -fx-background-color:  #313649;
 }
 
-#buttonDeleteAccountsView{
+#buttonDeleteAccountsView, .buttonEmptyTrashView, .buttonDeleteUserSettingsView, .buttonDeleteAccountTrashView{
     -fx-border-color: #E84545;
     -fx-border-width: 0.5px;
     -fx-background-color: transparent;
@@ -163,7 +169,7 @@
     -fx-background-radius: 30px;
 }
 
-#buttonAddItemAccountsView, #buttonCerrarPanelDetalleCuenta, #buttonEditAccount{
+#buttonAddItemAccountsView, #buttonCerrarPanelDetalleCuenta, #buttonEditAccount, .buttonRestoreAccountTrashView, .buttonChangePasswordSettingsView, .buttonLogOutSettingsView, #buttonGeneratePassword, #buttonCopiar{
     -fx-border-color: white;
     -fx-border-width: 0.5px;
     -fx-background-color: transparent;
@@ -173,18 +179,39 @@
     -fx-background-radius: 30px;
 }
 
-#buttonAddItemAccountsView:hover{
+.buttonRestoreAccountTrashView{
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+.buttonRestoreAccountTrashView{
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+#buttonAddItemAccountsView:hover, #buttonCerrarPanelDetalleCuenta:hover, #buttonEditAccount:hover, .buttonRestoreAccountTrashView:hover,#buttonGeneratePassword:hover, #buttonCopiar:hover,  .buttonChangePasswordSettingsView:hover, .buttonLogOutSettingsView:hover{
     -fx-font-size: 14px;
     -fx-background-color: #06AFB7;
     -fx-cursor: Hand;
 }
 
-#buttonDeleteAccountsView:hover{
-    -fx-font-size: 14px;
+#buttonDeleteAccountsView:hover, .buttonEmptyTrashView:hover, .buttonDeleteAccountTrashView:hover, .buttonDeleteUserSettingsView:hover{
+    -fx-font-size: 12px;
     -fx-background-color: #E84545;
     -fx-text-fill: #565e7f;
     -fx-cursor: Hand;
 }
+
 
 /**         VISTA AÑADIR UNA CUENTA EN EL USUARIO       **/
 
@@ -214,3 +241,4 @@
     -fx-border-radius: 30px;
     -fx-background-radius: 30px;
 }
+

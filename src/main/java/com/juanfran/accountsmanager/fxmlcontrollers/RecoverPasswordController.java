@@ -60,6 +60,22 @@ public class RecoverPasswordController {
     //  MÉTODOS
 
     /**
+     * Este método se encarga de comprobar
+     * si los datos introducidos por el
+     * usuario son números.
+     * @param insertedUserText
+     * @return
+     */
+    private boolean isNumber(String insertedUserText){
+        try{
+            Integer.parseInt(insertedUserText);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+
+    /**
      * Este método se encarga de comprobar si el código de recuperación
      * de la contraseña es correcto aunque antes debe de comprobar si
      * los inputs del formulario no están vacios
@@ -67,26 +83,41 @@ public class RecoverPasswordController {
      */
     public void isCodeCorrect(ActionEvent actionEvent) {
 
+        String code = this.textFieldCode.getText();
+
         //  Comprobamos si el campo no está vacio
-        if(!this.textFieldCode.getText().equals("")){
+        if(!code.equals("")){
 
             //  Comprobamos si no ha expirado el tiempo de validez del código de recuperación
             if(minutes>0 && seconds>0){
 
-                //  Comprobamos si el código introducido por el usuario es el igual al generado
-                Integer userCode = Integer.parseInt(this.textFieldCode.getText());
-                if(generatedCode.equals(userCode)){
+                //  Comprobamos si los datos introducidos por el usuario son números
+                if(isNumber(code)){
 
-                    //  Navegamos hacia la vista ChangePasswordView.fxml para cambiar la contraseña del usuario
-                    this.logger.info("El usuario ha acertado el código");
-                    ChangePasswordController.costumerEmail = customerEmail;
-                    ((Stage) this.buttonAceptar.getScene().getWindow()).setScene(ViewServiceProvider.getScene("ChangePasswordView.fxml"));
+                    //  Comprobamos si el código introducido por el usuario es el igual al generado
+                    Integer userCode = Integer.parseInt(code);
+                    if(generatedCode.equals(userCode)){
+
+                        //  Navegamos hacia la vista ChangePasswordView.fxml para cambiar la contraseña del usuario
+                        this.logger.info("El usuario ha acertado el código");
+                        ChangePasswordController.costumerEmail = customerEmail;
+                        ((Stage) this.buttonAceptar.getScene().getWindow()).setScene(ViewServiceProvider.getScene("ChangePasswordView.fxml"));
+
+                    }else{
+
+                        //  El usuario ha introducido un código incorrecto
+                        this.logger.info("El usuario ha introducido un código incorrecto: "+ code);
+                        ViewServiceProvider.launchAlert("Warning","El código introducido es incorrecto", Alert.AlertType.ERROR);
+                    }
+
                 }else{
 
-                    //  El usuario ha introducido un código incorrecto
-                    this.logger.info("El usuario ha introducido un código incorrecto: "+ this.textFieldCode.getText());
-                    ViewServiceProvider.launchAlert("Warning","El código introducido es incorrecto", Alert.AlertType.ERROR);
+                    //  Los datos introducidos solo pueden ser números
+                    this.logger.info("Los datos introducidos solo pueden ser números");
+                    ViewServiceProvider.launchAlert("Warning","Los datos introducidos solo pueden ser números", Alert.AlertType.ERROR);
+
                 }
+
             }else{
 
                 //  Ha expirado el tiempo de validez del código de recuperación

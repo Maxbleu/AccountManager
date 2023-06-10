@@ -4,9 +4,12 @@ import com.juanfran.accountsmanager.di.OrchestratorProyectDependences;
 import com.juanfran.accountsmanager.interfaces.IUserDAOS;
 import com.juanfran.accountsmanager.managers.UserManager;
 import com.juanfran.accountsmanager.models.UserModel;
+import javafx.scene.image.Image;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.io.File;
 
 @Component
 public class UserDAOS implements IUserDAOS {
@@ -27,8 +30,8 @@ public class UserDAOS implements IUserDAOS {
      */
     @Override
     public boolean thereUserRegisteredWithSameUserName(String userName) {
-        for(int i = 0; i<UserManager.Users.size(); i++){
-            if(UserManager.Users.get(i).getName().equals(userName)){
+        for(int i = 0; i<this.usersManager.Users.size(); i++){
+            if(this.usersManager.Users.get(i).getName().equals(userName)){
                 return true;
             }
         }
@@ -43,8 +46,8 @@ public class UserDAOS implements IUserDAOS {
      */
     @Override
     public boolean thereUserRegisteredWithSameEmail(String email) {
-        for(int i = 0; i<UserManager.Users.size(); i++){
-            if(UserManager.Users.get(i).getEmail().equals(email)){
+        for(int i = 0; i<this.usersManager.Users.size(); i++){
+            if(this.usersManager.Users.get(i).getEmail().equals(email)){
                 return true;
             }
         }
@@ -60,7 +63,7 @@ public class UserDAOS implements IUserDAOS {
     public void registerNewUser(UserModel newUser) {
         this.logger.info("Registramos un nuevo usuario");
         this.usersManager.insertUser(" { Call InsertUser (?,?,?,?) } ",newUser);
-        UserManager.Users.add(newUser);
+        this.usersManager.Users.add(newUser);
     }
 
     /**
@@ -71,9 +74,9 @@ public class UserDAOS implements IUserDAOS {
      */
     @Override
     public UserModel getUserByEmail(String email) {
-        for(int i = 0; i<UserManager.Users.size(); i++){
-            if(UserManager.Users.get(i).getEmail().equals(email)){
-                return UserManager.Users.get(i);
+        for(int i = 0; i<this.usersManager.Users.size(); i++){
+            if(this.usersManager.Users.get(i).getEmail().equals(email)){
+                return this.usersManager.Users.get(i);
             }
         }
         return null;
@@ -87,11 +90,41 @@ public class UserDAOS implements IUserDAOS {
      */
     @Override
     public UserModel getUserByName(String name) {
-        for(int i = 0; i<UserManager.Users.size(); i++){
-            if(UserManager.Users.get(i).getName().equals(name)){
-                return UserManager.Users.get(i);
+        for(int i = 0; i<this.usersManager.Users.size(); i++){
+            if(this.usersManager.Users.get(i).getName().equals(name)){
+                return this.usersManager.Users.get(i);
             }
         }
         return null;
+    }
+
+    /**
+     * Este método se encarga de eliminar
+     * un usuario de la aplicación
+     * @param userRegistered
+     */
+    @Override
+    public void removeUser(UserModel userRegistered) {
+        this.logger.info("Eliminar el usuario " + userRegistered.getIdUser() + " de la aplicación");
+
+        this.usersManager.deleteUser(" { Call DeleteUser (?) } ",userRegistered.getIdUser());
+
+        this.usersManager.Users.remove(userRegistered);
+    }
+
+    /**
+     * Este método se encarga de
+     * actualizar la foto de perfil
+     * de el usuario de la cuenta
+     * @param photoProfile
+     */
+    @Override
+    public void updatePhotoProfileUser(Integer idUser, File photoProfile) {
+        for(int i = 0; i<this.usersManager.Users.size(); i++){
+            if(this.usersManager.Users.get(i).getIdUser()==idUser){
+                this.usersManager.updatePhotoProfileUser(" { Call updatePhotoProfileUser (?,?) } ",idUser,photoProfile);
+                this.usersManager.Users.get(i).setPhotoUserProfile(new Image(photoProfile.getAbsolutePath()));
+            }
+        }
     }
 }

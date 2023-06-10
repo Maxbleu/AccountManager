@@ -1,5 +1,6 @@
 package com.juanfran.accountsmanager.models;
 
+import com.juanfran.accountsmanager.di.OrchestratorProyectDependences;
 import com.juanfran.accountsmanager.managers.AccountManager;
 
 public class AccountModel {
@@ -8,34 +9,36 @@ public class AccountModel {
     private String webSiteAddress;
     private String userName;
     private String email;
-    private PasswordModel password;
+    private Integer idPassword;
     private Integer idUser;
+    private boolean isRemoved;
 
-    public AccountModel(Integer idAccount, String webSiteAddress, String webSiteTitle, String userName, String email, PasswordModel password, Integer idUser) {
+    public AccountModel(Integer idAccount, String webSiteAddress, String webSiteTitle, String userName, String email, Integer password, Integer idUser) {
         this.idAccount = idAccount;
         this.webSiteAddress = webSiteAddress;
         this.webSiteTitle = webSiteTitle;
         this.email = email;
         this.userName = userName;
-        this.password = password;
+        this.idPassword = password;
         this.idUser = idUser;
     }
 
-    public AccountModel(String webSiteAddress, String webSiteTitle, String userName, String email, PasswordModel password) {
+    public AccountModel(String webSiteAddress, String webSiteTitle, String userName, String email, Integer idPassword) {
         this.webSiteAddress = webSiteAddress;
         this.webSiteTitle = webSiteTitle;
         this.email = email;
         this.userName = userName;
-        this.password = password;
+        this.idPassword = idPassword;
     }
 
     public AccountModel() {}
 
     public Integer getIdAccount() {
         if(this.idAccount == null){
-            if(AccountManager.Accounts.size() > 0){
-                Integer lastPosition = AccountManager.Accounts.size()-1;
-                this.idAccount = AccountManager.Accounts.get(lastPosition).idAccount+1;
+            AccountManager accountManager = (AccountManager) OrchestratorProyectDependences.getService(AccountManager.class);
+            if(accountManager.Accounts.size() > 0){
+                Integer lastPosition = accountManager.Accounts.size()-1;
+                this.idAccount = accountManager.Accounts.get(lastPosition).idAccount+1;
             }else{
                 this.idAccount = 1;
             }
@@ -77,12 +80,12 @@ public class AccountModel {
         this.email = email;
     }
 
-    public PasswordModel getPasswordModel() {
-        return password;
+    public Integer getIdPassword() {
+        return idPassword;
     }
 
-    public void setPasswordModel(PasswordModel password) {
-        this.password = password;
+    public void setIdPassword(Integer password) {
+        this.idPassword = password;
     }
 
     public Integer getIdUser() {
@@ -91,5 +94,11 @@ public class AccountModel {
 
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
+    }
+    public boolean isRemoved() {
+        return isRemoved;
+    }
+    public void setRemoved(boolean removed) {
+        isRemoved = removed;
     }
 }

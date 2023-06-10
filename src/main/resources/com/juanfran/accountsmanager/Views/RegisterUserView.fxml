@@ -9,16 +9,16 @@
 
 <AnchorPane id="sceneRegisterUserView" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #313649;" stylesheets="@../StyleSheet/StyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanfran.accountsmanager.fxmlcontrollers.RegisterUserController">
     <children>
-        <Label id="labelTitleOfRegisterUserView" layoutX="256.0" layoutY="48.0" text="Sign Up">
+        <Label id="labelTitleOfRegisterUserView" layoutX="206.0" layoutY="49.0" text="Sign Up">
             <font>
                 <Font name="System Bold" size="25.0" />
             </font>
         </Label>
-        <TextField fx:id="textFieldUserName" layoutX="256.0" layoutY="98.0" prefHeight="35.0" prefWidth="187.0" promptText="User" styleClass="inputUserNameRegisterUserView" />
-        <TextField fx:id="textFieldEmail" layoutX="256.0" layoutY="151.0" prefHeight="35.0" prefWidth="187.0" promptText="Email" styleClass="inputGmailRegisterUserView" />
-        <Button id="buttonAceptRegisterUserView" fx:id="buttonAccept" layoutX="367.0" layoutY="316.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="35.0" prefWidth="76.0" text="Aceptar" />
-        <PasswordField fx:id="passwordField" layoutX="256.0" layoutY="207.0" prefHeight="35.0" prefWidth="187.0" promptText="Password" styleClass="inputPasswordRegisterUserView" />
-        <PasswordField fx:id="passwordFieldRepeatedPassword" layoutX="256.0" layoutY="258.0" prefHeight="35.0" prefWidth="187.0" promptText="Repeat Password" styleClass="inputPasswordRegisterUserView" />
-        <Button id="buttonCancelRegisterUserView" layoutX="256.0" layoutY="316.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="76.0" text="Cancelar" />
+        <TextField fx:id="textFieldUserName" layoutX="206.0" layoutY="95.0" prefHeight="35.0" prefWidth="289.0" promptText="User" styleClass="inputUserNameRegisterUserView" />
+        <TextField fx:id="textFieldEmail" layoutX="205.0" layoutY="147.0" prefHeight="35.0" prefWidth="290.0" promptText="Email" styleClass="inputGmailRegisterUserView" />
+        <Button id="buttonAceptRegisterUserView" fx:id="buttonAccept" layoutX="299.0" layoutY="305.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="35.0" prefWidth="76.0" text="Aceptar" />
+        <PasswordField fx:id="passwordField" layoutX="205.0" layoutY="199.0" prefHeight="35.0" prefWidth="290.0" promptText="Password" styleClass="inputPasswordRegisterUserView" />
+        <PasswordField fx:id="passwordFieldRepeatedPassword" layoutX="205.0" layoutY="251.0" prefHeight="35.0" prefWidth="290.0" promptText="Repeat Password" styleClass="inputPasswordRegisterUserView" />
+        <Button id="buttonCancelRegisterUserView" layoutX="205.0" layoutY="305.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="76.0" text="Cancelar" />
     </children>
 </AnchorPane>

@@ -9,4 +9,5 @@ public interface IPasswordDAOS {
     PasswordModel getPasswordById(Integer id);
     void updateRecoverPasswordCode(Integer generatedCode, Integer idPassword);
     Integer getRecoverPasswordCode(Integer idPassword);
+    void removePassword(Integer idPassword);
 }

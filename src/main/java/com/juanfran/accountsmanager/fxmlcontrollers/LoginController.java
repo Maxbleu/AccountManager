@@ -1,5 +1,6 @@
 package com.juanfran.accountsmanager.fxmlcontrollers;
 
+import com.juanfran.accountsmanager.Main;
 import com.juanfran.accountsmanager.daos.PasswordDAOS;
 import com.juanfran.accountsmanager.daos.UserDAOS;
 import com.juanfran.accountsmanager.di.OrchestratorProyectDependences;
@@ -95,6 +96,12 @@ public class LoginController {
                     //  modificamos una cuenta personal para cifrar su información
                     //  antes de ser enviada a la base de datos.
                     AddAndModifyAccountController.userRegistered = user;
+
+                    AccountsController.userRegistered = user;
+
+                    MainController.userRegistered = user;
+
+                    SettingsController.userRegistered = user;
 
                     //  Cargamos las cuentas del usuario en la aplicación
                     ((AccountManager) OrchestratorProyectDependences.getService(AccountManager.class)).selectAccountsByUserId(" { Call SelectAccountsByUserId (?) } ", user.getIdUser());
