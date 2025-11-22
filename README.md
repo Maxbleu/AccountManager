@@ -4,8 +4,8 @@ Accounts Manager is a desktop application developed in Java with JavaFX, designe
 
 ## ⚙️ Setup
 You will need to install this two modules to run the project:
-- (SqlServerLibrary)[]
-- (CipherLibrary)[]
+- [SqlServerLibrary](https://github.com/Maxbleu/SqlServerLibrary)
+- [CipherLibrary](https://github.com/Maxbleu/CipherLibrary)
 
 ## 🏃 How to Run
 
