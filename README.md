@@ -2,6 +2,11 @@
 
 Accounts Manager is a desktop application developed in Java with JavaFX, designed to help users securely manage all their accounts and passwords in one place.
 
+## ⚙️ Setup
+You will need to install this two modules to run the project:
+- (SqlServerLibrary)[]
+- (CipherLibrary)[]
+
 ## 🏃 How to Run
 
 1. **Clone the repository:**
