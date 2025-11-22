@@ -2,37 +2,6 @@
 
 Accounts Manager is a desktop application developed in Java with JavaFX, designed to help users securely manage all their accounts and passwords in one place.
 
-## 🚀 Features
-
-- **Account Management:** Securely store and organize your account details (username, password, website).
-- **Password Generator:** Create strong and secure passwords with different complexity levels.
-- **Login and Registration:** User authentication system to protect data access.
-- **Password Recovery:** "Forgot my password" feature that sends a recovery code to the user's email.
-- **Recycle Bin:** Deleted accounts are moved to a recycle bin where they can be restored or permanently deleted.
-- **Custom Search:** Easily search and filter your accounts.
-- **Website Icons:** Automatically fetches and displays the favicon of the website associated with each account for easy identification.
-
-## 🛠️ Technologies Used
-
-- **Language:** Java 17
-- **UI Framework:** JavaFX
-- **Dependency Management:** Maven
-- **Database:** Microsoft SQL Server
-- **Additional Libraries:**
-  - Spring Framework (for dependency injection)
-  - Log4j (for logging)
-  - JavaMail (for sending emails)
-  - Jsoup (for web scraping icons)
-  - Ikonli & BootstrapFX (for icons and styles)
-
-## ✅ Prerequisites
-
-Make sure you have the following installed before running the project:
-
-- **JDK 17** (Java Development Kit)
-- **Apache Maven**
-- **Microsoft SQL Server:** A running instance of SQL Server is required. The connection settings are managed within the application.
-
 ## 🏃 How to Run
 
 1. **Clone the repository:**
@@ -73,6 +42,37 @@ src/
 │       └── views/        # FXML files for the GUI
 pom.xml                   # Maven configuration file
 ```
+
+## 🚀 Features
+
+- **Account Management:** Securely store and organize your account details (username, password, website).
+- **Password Generator:** Create strong and secure passwords with different complexity levels.
+- **Login and Registration:** User authentication system to protect data access.
+- **Password Recovery:** "Forgot my password" feature that sends a recovery code to the user's email.
+- **Recycle Bin:** Deleted accounts are moved to a recycle bin where they can be restored or permanently deleted.
+- **Custom Search:** Easily search and filter your accounts.
+- **Website Icons:** Automatically fetches and displays the favicon of the website associated with each account for easy identification.
+
+## 🛠️ Technologies Used
+
+- **Language:** Java 17
+- **UI Framework:** JavaFX
+- **Dependency Management:** Maven
+- **Database:** Microsoft SQL Server
+- **Additional Libraries:**
+  - Spring Framework (for dependency injection)
+  - Log4j (for logging)
+  - JavaMail (for sending emails)
+  - Jsoup (for web scraping icons)
+  - Ikonli & BootstrapFX (for icons and styles)
+
+## ✅ Prerequisites
+
+Make sure you have the following installed before running the project:
+
+- **JDK 17** (Java Development Kit)
+- **Apache Maven**
+- **Microsoft SQL Server:** A running instance of SQL Server is required. The connection settings are managed within the application.
 
 ## 📄 License
 
