@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="CENTER" prefHeight="800.0" prefWidth="1227.0" style="-fx-background-color: #313649;" stylesheets="@../styleSheet/StyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanfran.accountsmanager.fxmlcontrollers.AddAndModifyAccountController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="ALWAYS" minWidth="0.0" prefWidth="161.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1056.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="161.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+         <children>
+            <TextField fx:id="inputTestWebSiteTitle" layoutX="290.0" layoutY="301.0" prefHeight="45.0" prefWidth="427.0" promptText="Title" styleClass="inputTextAddAccountView">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="inputTestUserName" layoutX="290.0" layoutY="429.0" prefHeight="45.0" prefWidth="427.0" promptText="UserName" styleClass="inputTextAddAccountView">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="inputTestWebSiteURL" layoutX="290.0" layoutY="366.0" prefHeight="45.0" prefWidth="427.0" promptText="Website URL" styleClass="inputTextAddAccountView">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Button id="buttonAddAccountView" fx:id="buttonAcept" layoutX="617.0" layoutY="642.0" mnemonicParsing="false" onAction="#keepAccount" prefHeight="45.0" prefWidth="100.0" stylesheets="@../styleSheet/StyleSheet.css" text="Acept">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button id="buttonAddAccountView" layoutX="503.0" layoutY="642.0" mnemonicParsing="false" onAction="#navigateToAccountsView" prefHeight="45.0" prefWidth="100.0" text="Cancel">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="inputTestEmail" layoutX="290.0" layoutY="492.0" prefHeight="45.0" prefWidth="427.0" promptText="Email" styleClass="inputTextAddAccountView">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="inputTestPassword" layoutX="290.0" layoutY="558.0" prefHeight="45.0" prefWidth="427.0" promptText="Password" styleClass="inputTextAddAccountView">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            <ImageView fx:id="iconWebSite" fitHeight="122.0" fitWidth="148.0" layoutX="429.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" />
+            <ListView fx:id="listViewSearchsFound" layoutX="290.0" layoutY="346.0" prefHeight="455.0" prefWidth="427.0" style="-fx-background-color: #313649;" visible="false" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>

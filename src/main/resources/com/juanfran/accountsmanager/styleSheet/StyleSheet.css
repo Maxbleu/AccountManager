@@ -1,0 +1,243 @@
+/**             LOGIN           **/
+
+#labelForgotMyPassword:hover{
+    -fx-text-fill: #06AFB7;
+    -fx-cursor: Hand;
+}
+
+#labelTitleOfLoginView{
+    -fx-text-fill: #2E3347;
+}
+
+#labelForgotMyPassword{
+    -fx-text-fill: #2E3347;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+#iconSceneLoginView{
+    -fx-background-color: #232738;
+}
+
+.buttonSignInLoginView, #buttonNotHaveAccount, #buttonCancelForgotPasswordView, #buttonAceptForgotPasswordView, #buttonAceptRecoverPasswordView, #buttonAceptChangePasswordView, #buttonCancelRegisterUserView, #buttonAceptRegisterUserView, #buttonAddAccountView {
+    -fx-background-color: #565e7f;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.buttonSignInLoginView:hover, #buttonNotHaveAccount:hover, #buttonCancelForgotPasswordView:hover, #buttonAceptForgotPasswordView:hover, #buttonAceptRecoverPasswordView:hover, #buttonAceptChangePasswordView:hover, #buttonCancelRegisterUserView:hover, #buttonAceptRegisterUserView:hover, #buttonAddAccountView:hover {
+    -fx-background-color: #06AFB7;
+    -fx-cursor: Hand;
+}
+
+.inputUserLoginView, .inputPasswordLoginView{
+    -fx-appearance: none;
+    -fx-width: 100%;
+    -fx-border-width: 0;
+    -fx-font-family: inherit;
+    -fx-height: 35px;
+    -fx-font-size: 12px;
+    -fx-font-weight: 400;
+    -fx-background-color: rgba(0, 0, 0, 0.02);
+    -fx-background-insets: 0, 0, 1;
+    -fx-background-radius: 3px;
+    -fx-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    -fx-text-fill: black;
+    -fx-transition: all .15s ease;
+}
+
+.inputUserLoginView:hover, .inputPasswordLoginView:hover{
+    -fx-background-color: #e5e7ea;
+}
+
+/**             OLVIDÉ MI CONTRASEÑA           **/
+
+#labelTitleOfForgotMyPassword{
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+    -fx-text-fill: white;
+}
+
+#sceneForgotMyPassword{
+    -fx-background-color: #313649;
+}
+
+#textoForgotMyPassword{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.inputGmailForgotPasswordView, .inputEmailRecoverPasswordView, .inputPasswordChangePasswordView, .inputUserNameRegisterUserView, .inputGmailRegisterUserView, .inputPasswordRegisterUserView, .inputTextAddAccountView{
+    -fx-appearance: none;
+    -fx-width: 100%;
+    -fx-border-width: 0;
+    -fx-font-family: inherit;
+    -fx-height: 35%;
+    -fx-font-size: 12px;
+    -fx-font-weight: 400;
+    -fx-background-color: #3a4056;
+    -fx-background-insets: 0, 0, 1;
+    -fx-background-radius: 3px;
+    -fx-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    -fx-text-fill: white;
+    -fx-transition: all .15s ease;
+}
+
+.inputGmailForgotPasswordView:hover, .inputEmailRecoverPasswordView:hover, .inputPasswordChangePasswordView:hover, .inputUserNameRegisterUserView:hover, .inputGmailRegisterUserView:hover, .inputPasswordRegisterUserView:hover, .inputTextAddAccountView:hover{
+    -fx-background-color: #4c5370;
+}
+
+
+
+/**         RECUPERAR MI CONTRASEÑA         **/
+
+#labelTitleOfRecoverPasswordView, #textoRecoverPassword{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+
+/**         CAMBIAR MI CONTRASEÑA         **/
+
+#labelTitleChangePasswordView, #labelTitleOfRegisterUserView{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+}
+
+#sceneChangePasswordView{
+    -fx-background-color: #313649;
+}
+
+/**         REGISTRAR UN NUEVO USUARIO          **/
+
+#sceneRegisterUserView{
+    -fx-background-color: #313649;
+}
+
+/**         VISTA HOME          **/
+
+#gridPaneMenuDashBoardMainView{
+    -fx-background-color: #565e7f;
+}
+
+#sceneMainView{
+    -fx-background-color: #232738;
+}
+
+.buttonAccounts, .buttonDashBoard, .buttonTrash, .buttonGPassword, .buttonSettingsMainVFiew{
+    -fx-background-color: #565e7f;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 0px;
+    -fx-alignment: left;
+}
+
+.buttonAccounts:hover, .buttonDashBoard:hover, .buttonTrash:hover, .buttonGPassword:hover, .buttonSettingsMainVFiew:hover{
+    -fx-cursor: Hand;
+    -fx-background-color: #06AFB7;
+}
+
+#userProfile{
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+/**         VISTA ACCOUNTS          **/
+
+#sceneAccountsView{
+    -fx-background-color:  #313649;
+}
+
+#labelTitleAccountsView{
+    -fx-text-fill: white;
+}
+
+#listViewAccountsView, .list-cell{
+    -fx-background-color:  #313649;
+}
+
+#buttonDeleteAccountsView, .buttonEmptyTrashView, .buttonDeleteUserSettingsView, .buttonDeleteAccountTrashView{
+    -fx-border-color: #E84545;
+    -fx-border-width: 0.5px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E84545;
+    -fx-font-weight: bold;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+#buttonAddItemAccountsView, #buttonCerrarPanelDetalleCuenta, #buttonEditAccount, .buttonRestoreAccountTrashView, .buttonChangePasswordSettingsView, .buttonLogOutSettingsView, #buttonGeneratePassword, #buttonCopiar{
+    -fx-border-color: white;
+    -fx-border-width: 0.5px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+.buttonRestoreAccountTrashView{
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+.buttonRestoreAccountTrashView{
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+#buttonAddItemAccountsView:hover, #buttonCerrarPanelDetalleCuenta:hover, #buttonEditAccount:hover, .buttonRestoreAccountTrashView:hover,#buttonGeneratePassword:hover, #buttonCopiar:hover,  .buttonChangePasswordSettingsView:hover, .buttonLogOutSettingsView:hover{
+    -fx-font-size: 14px;
+    -fx-background-color: #06AFB7;
+    -fx-cursor: Hand;
+}
+
+#buttonDeleteAccountsView:hover, .buttonEmptyTrashView:hover, .buttonDeleteAccountTrashView:hover, .buttonDeleteUserSettingsView:hover{
+    -fx-font-size: 12px;
+    -fx-background-color: #E84545;
+    -fx-text-fill: #565e7f;
+    -fx-cursor: Hand;
+}
+
+
+/**         VISTA AÑADIR UNA CUENTA EN EL USUARIO       **/
+
+.inputTextAddAccountView{
+    -fx-appearance: none;
+    -fx-width: 100%;
+    -fx-border-width: 0;
+    -fx-font-family: inherit;
+    -fx-height: 35%;
+    -fx-font-size: 15px;
+    -fx-font-weight: 400;
+    -fx-background-color: #3a4056;
+    -fx-background-insets: 0, 0, 1;
+    -fx-background-radius: 3px;
+    -fx-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    -fx-text-fill: white;
+    -fx-transition: all .15s ease;
+}
+
+.inputTextAddAccountView:hover{
+    -fx-background-color: #4c5370;
+}
+
+/**         PANEL VISTA DETALLE CUENTA PERSONAL         **/
+
+#buttonCerrarPanelDetalleCuenta{
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}

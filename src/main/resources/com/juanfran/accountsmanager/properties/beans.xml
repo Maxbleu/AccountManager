@@ -1,0 +1,52 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/util
+    https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- Enlace al fichero de configuración -->
+    <util:properties id="settings" location="file:src/main/resources/com/juanfran/accountsmanager/Properties/settingsApp.properties" />
+
+    <!--  LIBRARIES  -->
+    <bean id="SqlServerLibrary" class="com.example.SqlServerLibrary.SqlServerLibrary" scope="singleton">
+        <constructor-arg value="#{settings['ConnectionStringDB']}" />
+    </bean>
+
+    <!--  MANAGERS  -->
+    <bean id="gmail" class="com.juanfran.accountsmanager.managers.GmailManager" scope="singleton">
+        <constructor-arg value="#{settings['EmailAddress']}" />
+        <constructor-arg value="#{settings['Password']}" />
+    </bean>
+
+    <!--  DB MANAGERS  -->
+    <bean id="AccountManager" class="com.juanfran.accountsmanager.managers.AccountManager" scope="singleton">
+        <constructor-arg ref="SqlServerLibrary" />
+        <constructor-arg ref="PasswordDAOS" />
+    </bean>
+
+    <bean id="PasswordManager" class="com.juanfran.accountsmanager.managers.PasswordManager" scope="singleton">
+        <constructor-arg ref="SqlServerLibrary" />
+    </bean>
+
+    <bean id="UserManager" class="com.juanfran.accountsmanager.managers.UserManager" scope="singleton">
+        <constructor-arg ref="SqlServerLibrary" />
+    </bean>
+
+    <!--  DAOS  -->
+    <bean id="AccountDAOS" class="com.juanfran.accountsmanager.daos.AccountDAOS" scope="singleton">
+        <constructor-arg ref="AccountManager" />
+    </bean>
+
+    <bean id="PasswordDAOS" class="com.juanfran.accountsmanager.daos.PasswordDAOS" scope="singleton">
+        <constructor-arg ref="PasswordManager" />
+    </bean>
+
+    <bean id="UserDAOS" class="com.juanfran.accountsmanager.daos.UserDAOS" scope="singleton">
+        <constructor-arg ref="UserManager" />
+    </bean>
+
+    <bean id="Main" class="com.juanfran.accountsmanager.Main" />
+
+</beans>

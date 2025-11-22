@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="sceneRegisterUserView" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #313649;" stylesheets="@../styleSheet/StyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanfran.accountsmanager.fxmlcontrollers.RegisterUserController">
+    <children>
+        <Label id="labelTitleOfRegisterUserView" layoutX="206.0" layoutY="49.0" text="Sign Up">
+            <font>
+                <Font name="System Bold" size="25.0" />
+            </font>
+        </Label>
+        <TextField fx:id="textFieldUserName" layoutX="206.0" layoutY="95.0" prefHeight="35.0" prefWidth="289.0" promptText="User" styleClass="inputUserNameRegisterUserView" />
+        <TextField fx:id="textFieldEmail" layoutX="205.0" layoutY="147.0" prefHeight="35.0" prefWidth="290.0" promptText="Email" styleClass="inputGmailRegisterUserView" />
+        <Button id="buttonAceptRegisterUserView" fx:id="buttonAccept" layoutX="299.0" layoutY="305.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="35.0" prefWidth="76.0" text="Aceptar" />
+        <PasswordField fx:id="passwordField" layoutX="205.0" layoutY="199.0" prefHeight="35.0" prefWidth="290.0" promptText="Password" styleClass="inputPasswordRegisterUserView" />
+        <PasswordField fx:id="passwordFieldRepeatedPassword" layoutX="205.0" layoutY="251.0" prefHeight="35.0" prefWidth="290.0" promptText="Repeat Password" styleClass="inputPasswordRegisterUserView" />
+        <Button id="buttonCancelRegisterUserView" layoutX="205.0" layoutY="305.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="76.0" text="Cancelar" />
+    </children>
+</AnchorPane>

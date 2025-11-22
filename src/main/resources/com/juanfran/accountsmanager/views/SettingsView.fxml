@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #313649;" stylesheets="@../styleSheet/StyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanfran.accountsmanager.fxmlcontrollers.SettingsController">
+   <children>
+      <Label layoutX="117.0" layoutY="54.0" text="Settings" textFill="WHITE" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="868.0" AnchorPane.topAnchor="54.0">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER_LEFT" layoutX="117.0" layoutY="186.0" maxWidth="1.7976931348623157E308" prefHeight="189.0" prefWidth="858.0" style="-fx-background-color: #48506b; -fx-background-radius: 15px;" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="117.0">
+         <children>
+            <HBox alignment="CENTER" maxHeight="72.0" maxWidth="1.7976931348623157E308" minHeight="72.0" prefHeight="72.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="452.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="142.0" text="Change password" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="426.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="buttonChangePassword" maxHeight="33.0" minHeight="33.0" mnemonicParsing="false" onAction="#changeUserPassword" prefHeight="33.0" prefWidth="149.0" styleClass="buttonChangePasswordSettingsView" text="Change Password" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="40.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="72.0" maxWidth="1.7976931348623157E308" minHeight="72.0" prefHeight="72.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="545.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Log Out" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="523.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="buttonLogOut" maxHeight="33.0" minHeight="33.0" mnemonicParsing="false" onAction="#logOutApplication" prefHeight="33.0" prefWidth="86.0" styleClass="buttonLogOutSettingsView" text="Log Out" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="103.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="72.0" maxWidth="1.7976931348623157E308" minHeight="72.0" prefHeight="72.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="450.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="92.0" text="Delete User" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="429.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="buttonDeleteUser" maxHeight="33.0" minHeight="33.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="33.0" prefWidth="107.0" styleClass="buttonDeleteUserSettingsView" text="Delete User" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="82.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label layoutX="117.0" layoutY="128.0" text="Accounts" textFill="WHITE" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="128.0">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

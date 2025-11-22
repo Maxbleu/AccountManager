@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" stylesheets="@../styleSheet/StyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juanfran.accountsmanager.fxmlcontrollers.LoginController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="415.1999877929687" minWidth="10.0" prefWidth="393.59996337890624" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.4" minWidth="10.0" prefWidth="306.40003662109376" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <children>
+                <TextField fx:id="textFieldUserName" layoutX="44.0" layoutY="127.0" prefHeight="35.0" prefWidth="223.0" promptText="User" styleClass="inputUserLoginView" />
+                <Label id="labelTitleOfLoginView" layoutX="44.0" layoutY="72.0" text="Sign In" textFill="#1e293b">
+                    <font>
+                        <Font name="System Bold" size="25.0" />
+                    </font>
+                </Label>
+                <Label fx:id="textFieldError" layoutX="58.0" layoutY="173.0" />
+                <PasswordField fx:id="passwordField" layoutX="44.0" layoutY="182.0" prefHeight="35.0" prefWidth="223.0" promptText="Password" styleClass="inputPasswordLoginView" />
+                <Button id="buttonNotHaveAccount" layoutX="44.0" layoutY="306.0" mnemonicParsing="false" onAction="#navigateToRegisterUserView" prefHeight="35.0" prefWidth="223.0" text="Don't have an account? Sign up" />
+                <Button alignment="CENTER" layoutX="176.0" layoutY="244.0" mnemonicParsing="false" onAction="#login" prefHeight="35.0" prefWidth="91.0" styleClass="buttonSignInLoginView" text="Sign In" />
+                <Label id="labelForgotMyPassword" fx:id="labelForgotMyPassword" layoutX="44.0" layoutY="253.0" onMouseClicked="#navigateToIForgotMyPasswordView" text="Forgot Password?">
+                    <font>
+                        <Font size="11.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane id="iconSceneLoginView" prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <ImageView fitHeight="238.0" fitWidth="377.0" layoutX="12.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/imgLoginView.png" />
+                </ImageView>
+            </children></AnchorPane>
+    </children>
+</GridPane>
